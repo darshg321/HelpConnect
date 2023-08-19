@@ -6,25 +6,39 @@ import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 import {LocalizationProvider} from "@mui/x-date-pickers";
 import {DateTimePicker} from "@mui/x-date-pickers";
 import {useState} from "react";
+import dayjs from "dayjs";
 
+function sendToMongo(jsonData) {
+    console.log(jsonData)
+    fetch('/api/storepost', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(jsonData)
+    }).then(response => response.json())
+        .then(response => console.log(JSON.stringify(response)))
+}
+
+function createPost(helpTime, timestamp) {
+    console.log(helpTime)
+    const form = document.getElementById('postForm');
+    const formData = new FormData(form);
+    formData.append("helptime", helpTime)
+    formData.append("timestamp", timestamp)
+
+    const jsonObject = {};
+    formData.forEach((value, key) => {
+        jsonObject[key] = value;
+    });
+
+    // Convert JSON object to a string
+    // const jsonString = JSON.stringify(jsonObject);
+    sendToMongo(jsonObject)
+
+}
 
 export default function Page() {
-
-    function createPost(helpTime) {
-        console.log(helpTime)
-        const form = document.getElementById('postForm');
-        const formData = new FormData(form);
-
-        const jsonObject = {};
-        formData.forEach((value, key) => {
-            jsonObject[key] = value;
-        });
-
-        // Convert JSON object to a string
-        const jsonString = JSON.stringify(jsonObject);
-        console.log(jsonString)
-    }
-
     function PostForm() {
         const [helpTime, setHelpTime] = useState();
         return (
@@ -59,13 +73,12 @@ export default function Page() {
                         <input id="2-more" type="radio" className="form-radio" name="length" value="2<" />
                         <label htmlFor="2-more">Longer than 2 hours</label>
                     </div>
-                    <button type="button" className="form-button" onClick={() => createPost(helpTime)}>Create Post</button>
+                    <button type="button" className="form-button" onClick={() => createPost(helpTime, dayjs())}>Create Post</button>
                 </form>
             </div>
 
         )
     }
-
     return (
         <div>
             <Navbar />

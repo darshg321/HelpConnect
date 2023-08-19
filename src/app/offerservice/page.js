@@ -3,7 +3,10 @@ import Card from "@/app/(components)/card";
 
 export default function Page() {
 
-
+    // async function Posts() {
+    //     let postsArray = await fetch('api/getposts')
+    //
+    // }
 
     return (
         <div>
