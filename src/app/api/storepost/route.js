@@ -10,6 +10,9 @@ export async function POST(req) {
     try {
         await client.connect()
 
+        // let jsonData = await req.json()
+        // if jsonData
+
         let postCollection = client.db('Posts').collection('Posts')
 
         await postCollection.insertOne(await req.json())

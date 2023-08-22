@@ -3,7 +3,7 @@ import { NextResponse } from "next/server"
 import { MongoClient } from "mongodb";
 import 'dotenv/config'
 
-export async function GET(req) {
+export async function GET(req, res) {
     let uri = process.env.MONGODB_URI
     const client = new MongoClient(uri)
 
@@ -20,8 +20,10 @@ export async function GET(req) {
             postArray.push(doc)
         }
         console.log(postArray)
+        // res.status(200).json({postArray})
 
-        return NextResponse.json({ message: "Sent posts", worked: true })
+        return NextResponse.json({ postArray })
+        // return NextResponse.json({ "test": "stuff" })
     }
     catch (e) {
         console.log(e)

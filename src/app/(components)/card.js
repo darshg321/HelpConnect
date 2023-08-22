@@ -3,7 +3,7 @@ import "./cardstyle.css"
 // change pfp
 
 export default function Card(props) {
-    const { title, accountName, profilePicture, picture, location, timestamp } = props;
+    const { title, accountName, profilePicture, picture, location, timestamp, InPersonOrVirtual, length, helpTime } = props;
 
     return (
         <div className="custom-card">
@@ -15,10 +15,13 @@ export default function Card(props) {
                 </div>
                 <img className="custom-card-image" src={picture} alt="Card Content" />
             </div>
+            <div><p>{InPersonOrVirtual}</p></div>
+            <div><p>Length: {length} hours</p></div>
             <div className="custom-card-info">
                 <p className={"location"}>{location}</p>
-                <p>{timestamp}</p>
+                <p>{helpTime}</p>
             </div>
+            <div><p>{timestamp}</p></div>
         </div>
     );
 };

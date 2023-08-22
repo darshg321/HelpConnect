@@ -1,5 +1,4 @@
 "use client"
-import Navbar from "@/app/(components)/navbar";
 import "./poststyle.css"
 
 import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
@@ -7,6 +6,8 @@ import {LocalizationProvider} from "@mui/x-date-pickers";
 import {DateTimePicker} from "@mui/x-date-pickers";
 import {useState} from "react";
 import dayjs from "dayjs";
+
+// need to add image in here
 
 function sendToMongo(jsonData) {
     console.log(jsonData)
@@ -16,8 +17,8 @@ function sendToMongo(jsonData) {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(jsonData)
-    }).then(response => response.json())
-        .then(response => console.log(JSON.stringify(response)))
+    })
+        .then(window.location = '/offerservice')
 }
 
 function createPost(helpTime, timestamp) {
@@ -32,8 +33,6 @@ function createPost(helpTime, timestamp) {
         jsonObject[key] = value;
     });
 
-    // Convert JSON object to a string
-    // const jsonString = JSON.stringify(jsonObject);
     sendToMongo(jsonObject)
 
 }
@@ -81,7 +80,6 @@ export default function Page() {
     }
     return (
         <div>
-            <Navbar />
             <PostForm />
         </div>
     )
