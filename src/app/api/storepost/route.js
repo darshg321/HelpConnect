@@ -10,12 +10,21 @@ export async function POST(req) {
     try {
         await client.connect()
 
-        // let jsonData = await req.json()
-        // if jsonData
+        let jsonData = await req.json()
+        // console.log(jsonData)
 
-        let postCollection = client.db('Posts').collection('Posts')
+        let helpType = jsonData['helpType']
+        console.log(helpType)
+        // let postCollection = client.db('Posts').collection('Posts')
+        let postCollection
+        if (helpType === 'OfferHelp') {
+            postCollection = client.db('Posts').collection('OfferHelp')
+        }
+        else if (helpType === 'RequestHelp') {
+            postCollection = client.db('Posts').collection('RequestHelp')
+        }
 
-        await postCollection.insertOne(await req.json())
+        await postCollection.insertOne(jsonData)
         return NextResponse.json({ message: "Stored post", worked: true })
     }
     catch (e) {

@@ -1,30 +1,16 @@
-// "use client"
-import Card from "@/app/(components)/card";
+import Posts from "@/app/(components)/posts";
 
 async function getPosts() {
-    return await fetch('http://localhost:3000/api/getposts',
+    let jsonData = await fetch('http://localhost:3000/api/getposts?helptype=OfferHelp&limit=5',
         { cache: 'no-store' })
+    return (await jsonData.json())['postArray'];
 }
 
-export default function Page() {
-
-    async function Posts() {
-        let postsArray = (await (await getPosts()).json())['postArray']
-        console.log(postsArray)
-
-        return (
-            <div id={"posts"}>
-                {postsArray.map((prop) => (
-                    <Card key={prop['_id']} title={prop['title']} location={prop['address']} timestamp={prop['timestamp']}
-                          InPersonOrVirtual={prop['InPersonOrVirtual']} length={prop['length']} helpTime={prop['helptime']}/>
-                ))}
-            </div>
-        )
-    }
+export default async function Page() {
 
     return (
         <div>
-            <Posts />
+            <Posts postsArray={await getPosts()}/>
         </div>
     )
 }

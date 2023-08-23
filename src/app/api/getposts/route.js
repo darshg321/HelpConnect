@@ -1,19 +1,47 @@
-import { NextResponse } from "next/server"
+import {NextResponse} from "next/server"
 
 import { MongoClient } from "mongodb";
 import 'dotenv/config'
 
+function getParamsFromUrl(url) {
+    const params = {};
+    const paramStr = url.split('?')[1]; // Get the query string part of the URL
+
+    if (paramStr) {
+        const paramPairs = paramStr.split('&');
+
+        for (const paramPair of paramPairs) {
+            const [key, value] = paramPair.split('=');
+            if (key && value) {
+                params[decodeURIComponent(key)] = decodeURIComponent(value);
+            }
+        }
+    }
+
+    return params;
+}
+
 export async function GET(req, res) {
     let uri = process.env.MONGODB_URI
     const client = new MongoClient(uri)
+    let params = getParamsFromUrl(await req.url)
+    let helptype = params['helptype']
+    let limit = parseInt(params['limit'])
 
     try {
         await client.connect()
 
-        let postCollection = client.db('Posts').collection('Posts')
+        // let postCollection = client.db('Posts').collection('Posts')
+        let postCollection
+        if (helptype === "OfferHelp") {
+            postCollection = client.db('Posts').collection('OfferHelp')
+        }
+        else if (helptype === "RequestHelp") {
+            postCollection = client.db('Posts').collection('RequestHelp')
+        }
 
         let postArray = []
-        // limit could be custom
+
         const cursor = postCollection.find({}).limit(10)
 
         for await (const doc of cursor) {
