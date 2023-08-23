@@ -14,12 +14,11 @@ export default function Navbar() {
                 <ul>
                     <Link href={"/offerservice"}>Offering Services</Link>
                     <Link href={"/requestservice"}>Requesting Services</Link>
-                    {/*<Link href={"/offeritem"}>Offering Items</Link>*/}
                 </ul>
                 <Link href={"/createpost"}>
                     <Image src={"/createpost.png"} alt={"Create new post"} width={75} height={75}></Image>
                 </Link>
-                <Link href={"/signin"}>Sign In</Link>
+                {/*<Link href={"/signin"}>Sign In</Link>*/}
 
             </nav>
         </div>

@@ -4,6 +4,10 @@ import { MongoClient } from "mongodb";
 import 'dotenv/config'
 
 export async function POST(req) {
+    if (!process.env.MONGODB_URI) {
+        throw new Error('Invalid/Missing environment variable: "MONGODB_URI"')
+    }
+
     let uri = process.env.MONGODB_URI
     const client = new MongoClient(uri)
 

@@ -11,14 +11,19 @@ import dayjs from "dayjs";
 
 function sendToMongo(jsonData) {
     console.log(jsonData)
-    fetch('/api/storepost', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(jsonData)
-    })
-        .then(window.location = '/offerservice')
+    try {
+        fetch('/api/storepost', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(jsonData)
+        })
+            .then(window.location = '/offerservice')
+    }
+    catch (e) {
+        console.error("Failed to store post", e)
+    }
 }
 
 function createPost(helpTime, timestamp) {
@@ -49,7 +54,6 @@ export default function Page() {
                         <select className="form-select" name="helpType">
                             <option value="OfferHelp">Offering Help</option>
                             <option value="RequestHelp">Requesting Help</option>
-                            {/*<option value="OfferItem">Offering Item</option>*/}
                         </select>
                     </label>
                     <input type="text" className="form-input" name="title" placeholder="Title of your post" />

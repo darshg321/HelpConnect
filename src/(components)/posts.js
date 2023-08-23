@@ -1,8 +1,15 @@
-import Card from "@/app/(components)/card";
+import Card from "@/(components)/card";
 
 
 export default function Posts(props) {
     let postsArray = props.postsArray
+    if (!postsArray) {
+        return (
+            <div>
+                <h1>Unable to fetch posts</h1>
+            </div>
+        )
+    }
 
     return (
         <div id={"posts"}>
