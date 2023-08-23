@@ -21,8 +21,12 @@ function getParamsFromUrl(url) {
     return params;
 }
 
-export async function GET(req, res) {
+export async function GET(req) {
     let uri = process.env.MONGODB_URI
+    if (!process.env.MONGODB_URI) {
+        throw new Error('Invalid/Missing environment variable: "MONGODB_URI"')
+    }
+
     const client = new MongoClient(uri)
     let params = getParamsFromUrl(await req.url)
     let helptype = params['helptype']
@@ -42,7 +46,7 @@ export async function GET(req, res) {
 
         let postArray = []
 
-        const cursor = postCollection.find({}).limit(10)
+        const cursor = postCollection.find({}).limit(limit)
 
         for await (const doc of cursor) {
             postArray.push(doc)
