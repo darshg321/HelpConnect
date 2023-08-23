@@ -11,6 +11,12 @@ import dayjs from "dayjs";
 
 function sendToMongo(jsonData) {
     console.log(jsonData)
+    if (process.env.VERCEL_URL) {
+        console.error(process.env.VERCEL_URL)
+    }
+    else {
+        console.error("me sad")
+    }
     try {
         fetch(`${process.env.PREFIX}${process.env.VERCEL_URL}/api/storepost`, {
             method: 'POST',
