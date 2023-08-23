@@ -12,7 +12,7 @@ import dayjs from "dayjs";
 function sendToMongo(jsonData) {
     console.log(jsonData)
     try {
-        fetch('/api/storepost', {
+        fetch(`${process.env.BASE_URL}/api/storepost`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

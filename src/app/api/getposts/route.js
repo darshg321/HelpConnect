@@ -4,21 +4,20 @@ import { MongoClient } from "mongodb";
 import 'dotenv/config'
 
 function getParamsFromUrl(url) {
-    const params = {};
-    const paramStr = url.split('?')[1]; // Get the query string part of the URL
+    const params = {}
+    const paramStr = url.split('?')[1]
 
     if (paramStr) {
-        const paramPairs = paramStr.split('&');
+        const paramPairs = paramStr.split('&')
 
         for (const paramPair of paramPairs) {
-            const [key, value] = paramPair.split('=');
+            const [key, value] = paramPair.split('=')
             if (key && value) {
-                params[decodeURIComponent(key)] = decodeURIComponent(value);
+                params[decodeURIComponent(key)] = decodeURIComponent(value)
             }
         }
     }
-
-    return params;
+    return params
 }
 
 export async function GET(req) {
@@ -35,7 +34,6 @@ export async function GET(req) {
     try {
         await client.connect()
 
-        // let postCollection = client.db('Posts').collection('Posts')
         let postCollection
         if (helptype === "OfferHelp") {
             postCollection = client.db('Posts').collection('OfferHelp')
@@ -51,11 +49,8 @@ export async function GET(req) {
         for await (const doc of cursor) {
             postArray.push(doc)
         }
-        console.log(postArray)
-        // res.status(200).json({postArray})
 
         return NextResponse.json({ postArray })
-        // return NextResponse.json({ "test": "stuff" })
     }
     catch (e) {
         console.log(e)
