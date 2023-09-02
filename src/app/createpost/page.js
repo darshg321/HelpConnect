@@ -53,7 +53,7 @@ export default function Page() {
                         </select>
                     </label>
                     <input type="text" className="form-input" name="title" placeholder="Title of your post" required={true}/>
-                    <input type="text" className="form-input" name="contactInfo" placeholder="Your contact infoormation" required={true}/>
+                    <input type="text" className="form-input" name="contactInfo" placeholder="Your contact information" required={true}/>
                     <div className="radio-group">
                         <input id="InPerson" type="radio" className="form-radio" name="InPersonOrVirtual" value="inPerson" />
                         <label htmlFor="InPerson">In-Person</label>
