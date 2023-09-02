@@ -15,11 +15,9 @@ export async function POST(req) {
         await client.connect()
 
         let jsonData = await req.json()
-        // console.log(jsonData)
+        console.log(jsonData)
 
         let helpType = jsonData['helpType']
-        console.log(helpType)
-        // let postCollection = client.db('Posts').collection('Posts')
         let postCollection
         if (helpType === 'OfferHelp') {
             postCollection = client.db('Posts').collection('OfferHelp')

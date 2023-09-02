@@ -1,0 +1,6 @@
+#posts {
+    display: grid;
+    justify-content: center;
+    background: rgb(180,246,255);
+    background: linear-gradient(90deg, rgba(180,246,255,1) 0%, rgba(82,229,255,1) 100%);
+}

@@ -1,0 +1,42 @@
+/* Overall Page Styling */
+.maindiv {
+    font-family: 'Arial', sans-serif; /* Using Arial, but you can opt for any font-family you prefer */
+    background-color: #e6f7ff; /* Soft blue background for the entire page */
+    color: #003366; /* A deep blue for the text */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+    justify-content: center; /* Center content vertically */
+    height: 100vh; /* Use the full viewport height */
+    margin: 0; /* Remove default margins */
+    padding: 0; /* Remove default padding */
+}
+
+/* Main title styling */
+.mainTitle {
+    font-size: 3em; /* Large font size */
+    margin-bottom: 10px; /* Spacing between main title and subtitle */
+}
+
+/* Subtitle styling */
+.subTitle {
+    font-size: 1.5em;
+    margin-bottom: 30px; /* Space before the button */
+}
+
+/* Get Started Button styling */
+.getstartedbutton {
+    padding: 15px 30px; /* Vertical and horizontal padding */
+    background-color: #007BFF; /* Bright blue background */
+    color: #FFFFFF; /* White text */
+    border: none; /* No border */
+    border-radius: 30px; /* Rounded edges for the button */
+    font-size: 1.2em; /* Larger font for visibility */
+    cursor: pointer; /* Hand cursor on hover */
+    text-decoration: none; /* No underline */
+    transition: 0.3s; /* Smooth hover effect */
+}
+
+.getstartedbutton:hover {
+    background-color: #0056b3; /* A darker blue on hover */
+}

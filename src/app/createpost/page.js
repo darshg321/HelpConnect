@@ -7,18 +7,9 @@ import {DateTimePicker} from "@mui/x-date-pickers";
 import {useState} from "react";
 import dayjs from "dayjs";
 
-// need to add image in here
-
 function sendToMongo(jsonData) {
-    console.log(jsonData)
-    if (process.env.VERCEL_URL) {
-        console.error(process.env.VERCEL_URL)
-    }
-    else {
-        console.error("me sad")
-    }
     try {
-        fetch(`${process.env.PREFIX}${process.env.VERCEL_URL}/api/storepost`, {
+        fetch('/api/storepost', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -33,7 +24,6 @@ function sendToMongo(jsonData) {
 }
 
 function createPost(helpTime, timestamp) {
-    console.log(helpTime)
     const form = document.getElementById('postForm');
     const formData = new FormData(form);
     formData.append("helptime", helpTime)
@@ -56,21 +46,21 @@ export default function Page() {
                 <h1>Create a Post</h1>
                 <form id="postForm" className="post-form" autoComplete={"off"}>
                     <label className="form-label">
-                        Are you offering help, requesting help, or offering an item?
-                        <select className="form-select" name="helpType">
+                        <h4>Are you offering help or requesting help?</h4>
+                        <select className="form-select" name="helpType" required={true}>
                             <option value="OfferHelp">Offering Help</option>
                             <option value="RequestHelp">Requesting Help</option>
                         </select>
                     </label>
-                    <input type="text" className="form-input" name="title" placeholder="Title of your post" />
-                    <input type="text" className="form-input" name="description" placeholder="Description of your post" />
+                    <input type="text" className="form-input" name="title" placeholder="Title of your post" required={true}/>
+                    <input type="text" className="form-input" name="contactInfo" placeholder="Your contact infoormation" required={true}/>
                     <div className="radio-group">
                         <input id="InPerson" type="radio" className="form-radio" name="InPersonOrVirtual" value="inPerson" />
                         <label htmlFor="InPerson">In-Person</label>
                         <input id="Virtual" type="radio" className="form-radio" name="InPersonOrVirtual" value="Virtual" />
                         <label htmlFor="Virtual">Virtual</label>
                     </div>
-                    <input type="text" className="form-input" name="address" placeholder="Address for help" />
+                    <input type="text" className="form-input" name="address" placeholder="Address for help" required={true}/>
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
                         <DateTimePicker label="Time" value={helpTime} onChange={(newValue) => setHelpTime(newValue)}/>
                     </LocalizationProvider>

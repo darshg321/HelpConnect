@@ -1,53 +1,100 @@
+/* General container styling */
 .create-post-container {
-    max-width: 500px;
-    margin: 0 auto;
+    background-color: #f8f9fa; /* Light greyish color */
     padding: 20px;
-    background-color: #f5f5f5;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 10px;
+    max-width: 600px; /* Adjust as needed */
+    margin: 20px auto; /* Center the form */
 }
 
+/* Typography */
+.create-post-container h1 {
+    color: #007BFF; /* Blue color */
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+/* Form styling */
 .post-form {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Stack elements vertically */
 }
 
+/* Label styling */
 .form-label {
-    font-weight: bold;
     margin-bottom: 10px;
+    font-weight: bold;
+    color: #333; /* Dark grey */
 }
 
-.form-select,
-.form-input,
-.form-radio {
+/* Select and input fields styling */
+.form-select, .form-input {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
+    padding: 10px 15px; /* Padding for comfort */
+    border: 1px solid #ccc; /* Light grey border */
+    border-radius: 5px; /* Rounded corners */
+    margin-bottom: 15px; /* Space between form elements */
+    transition: 0.3s; /* Transition for hover and focus effects */
 }
 
-.form-radio {
-    margin-right: 5px;
+.form-select:focus, .form-input:focus {
+    border-color: #007BFF; /* Blue color when focused */
+    box-shadow: 0 0 5px rgba(0,123,255,0.5); /* Subtle glow effect */
 }
 
+/* Custom radio button styles */
 .radio-group {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     margin-bottom: 15px;
 }
 
-.form-button {
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
+.form-radio {
+    display: none; /* Hide default radio button */
+}
+
+.form-radio + label {
+    position: relative;
+    padding-left: 25px; /* Space for custom radio button */
     cursor: pointer;
-    font-size: 16px;
+}
+
+.form-radio + label::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid #007BFF;
+    background: #fff;
+}
+
+.form-radio:checked + label::after {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #007BFF;
+}
+
+/* Button styling */
+.form-button {
+    background: linear-gradient(90deg, #007BFF, #00C7C7); /* Gradient from blue to teal */
+    color: white; /* White text */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 15px; /* Comfortable padding */
+    cursor: pointer; /* Hand cursor on hover */
+    transition: 0.3s; /* Smooth hover effect */
 }
 
 .form-button:hover {
-    background-color: #0056b3;
+    background: linear-gradient(90deg, #0056b3, #007BFF); /* Darker gradient on hover */
 }
