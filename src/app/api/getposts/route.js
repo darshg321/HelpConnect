@@ -44,7 +44,7 @@ export async function GET(req) {
 
         let postArray = []
 
-        const cursor = postCollection.find({}).limit(limit)
+        const cursor = postCollection.find({}).limit(5)
 
         for await (const doc of cursor) {
             postArray.push(doc)
