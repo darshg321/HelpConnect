@@ -1,8 +1,7 @@
 /* Overall Page Styling */
 .maindiv {
     font-family: 'Arial', sans-serif; /* Using Arial, but you can opt for any font-family you prefer */
-    background-color: #e6f7ff; /* Soft blue background for the entire page */
-    color: #003366; /* A deep blue for the text */
+    color: #225E93; /* A deep blue for the text */
     display: flex;
     flex-direction: column;
     align-items: center; /* Center content horizontally */

@@ -1,6 +1,6 @@
 /* General card styling */
 .custom-card {
-    background: #f5efff; /* Light greyish color */
+    background: #eff8f6; /* Light greyish color */
     border-radius: 10px; /* Rounded corners */
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
@@ -39,13 +39,6 @@
     border-radius: 50%; /* Circular profile picture */
     margin-right: 10px; /* Space between the image and name */
 }
-
-/* Card image styling */
-/*.custom-card-image {*/
-/*    width: 100%; !* Full width of the card *!*/
-/*    border-radius: 5px; !* Slight rounded corners *!*/
-/*    object-fit: cover;*/
-/*}*/
 
 /* Card info styling */
 .custom-card-info {

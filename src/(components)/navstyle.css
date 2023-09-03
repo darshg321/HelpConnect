@@ -1,6 +1,6 @@
 /* General navbar styling */
 .mainNav {
-    background: linear-gradient(90deg, #007BFF, #00C7C7); /* Gradient from blue to teal */
+    background: #225E93; /* Gradient from blue to teal */
     display: flex;
     justify-content: space-between; /* Space out the elements */
     align-items: center; /* Vertically center align everything */
